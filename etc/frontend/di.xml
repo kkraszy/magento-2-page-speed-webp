@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!--
+      On ResultInterface with a negative sortOrder, like core's asyncCssLoad: the full page
+      cache plugins sit on this interface and store the body. A plugin on Result\Layout
+      runs after them, so the cached page would keep the JPEG URLs.
+    -->
+    <type name="Magento\Framework\Controller\ResultInterface">
+        <plugin name="kkkonrad_pagespeed_webp" type="Kkkonrad\PageSpeed\Plugin\WebpUrls" sortOrder="-10"/>
+    </type>
+</config>
